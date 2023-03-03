@@ -71,6 +71,11 @@ let deleted = false
 function input(event) {
     word += event.key
     const matched = words.filter(w => w.text.startsWith(word))
+
+    if (matched.length == 0) {
+        word = event.key
+    }
+
     const unmatched = words.filter(w => !matched.includes(w))
     unmatched.forEach(w => {
         w.matched = false
@@ -90,8 +95,6 @@ function input(event) {
 
     if (deleted) {
         word = ''
-    } else if (matched.length == 0) {
-        word = event.key
     }
 
     deleted = false
