@@ -70,11 +70,13 @@ let deleted = false
  */
 function input(event) {
     word += event.key
-    const matched = words.filter(w => w.text.startsWith(word))
+    let matched = words.filter(w => w.text.startsWith(word))
 
     if (matched.length == 0) {
         word = event.key
     }
+
+    matched = words.filter(w => w.text.startsWith(word))
 
     const unmatched = words.filter(w => !matched.includes(w))
     unmatched.forEach(w => {
